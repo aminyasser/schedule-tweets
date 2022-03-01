@@ -1,0 +1,18 @@
+<h1>Hey there</h1>
+
+<%= link_to 'Accounts', twitter_accounts_path %>
+<br>
+<br>
+
+
+<% if user_signed_in? %>
+Hey, <%= current_user.email%>
+<%= button_to 'Connect Twitter', "/auth/twitter", method: :post %>
+<%= link_to 'Logout', destroy_user_session_path ,  method: :delete %>
+<% else %>
+<br>
+<%= link_to 'Login', new_user_session_path %>
+<%= link_to 'Sign Up', new_user_registration_path %>
+
+<% end %>
+
