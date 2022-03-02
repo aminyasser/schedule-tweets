@@ -1,0 +1,9 @@
+<h1>Tweets</h1>
+
+
+<% if current_user.twitter_accounts.any?  %>
+    <%= link_to 'Schedule Tweet', new_tweet_path %> 
+<% else %>
+    <%= link_to 'Connect Twitter Account', "/auth/twitter" , method: :post%>
+<% end %>
+
