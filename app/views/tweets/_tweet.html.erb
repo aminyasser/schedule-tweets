@@ -1,0 +1,11 @@
+<br>
+<%= image_tag tweet.twitter_account.image, style:"border-radius:50%; width:40px; margin-top:10px" %>
+<%= link_to "@#{tweet.twitter_account.username}", "https://twitter.com/#{tweet.twitter_account.username}" , target: :_blank %>
+<%= tweet.body %>
+
+
+<% if tweet.published? %>
+    <%= link_to "View Tweet", "https://twitter.com/#{tweet.twitter_account.username}/status/#{tweet.tweet_id}", target: :_blank %>
+<% else %>
+    Scheduled for <%= l tweet.published_at.to_date, format: :long %> <%= tweet.getStringTime(tweet.published_at) %>
+<% end %>
