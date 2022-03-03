@@ -8,4 +8,6 @@
     <%= link_to "View Tweet", "https://twitter.com/#{tweet.twitter_account.username}/status/#{tweet.tweet_id}", target: :_blank %>
 <% else %>
     Scheduled for <%= l tweet.published_at.to_date, format: :long %> <%= tweet.getStringTime(tweet.published_at) %>
+    <%= link_to "Edit Tweet", edit_tweet_path(tweet) %>
+    <%= link_to "Delete", tweet, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-outline-danger" %>
 <% end %>

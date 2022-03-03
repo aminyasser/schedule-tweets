@@ -1,5 +1,6 @@
 class TweetsController < ApplicationController
     before_action :authenticate_user! 
+    before_action :set_tweet , only: [:edit, :update, :show, :destroy]
 
     def index
         @tweets = current_user.tweets
@@ -16,12 +17,30 @@ class TweetsController < ApplicationController
         else
             render :new
         end
-    end   
+    end
+    
+    def edit 
+    end    
+
+    def update
+        if @tweet.update(tweet_params)
+            redirect_to tweets_path , notice: "Tweet updated Successfully"
+        end    
+    end
+    
+    def destroy
+        @tweet.destroy
+        redirect_to tweets_path , notice: "Tweet destroyed Successfully"
+    end    
 
 
     private 
 
     def tweet_params 
         params.require(:tweet).permit(:twitter_account_id , :body , :published_at)
+    end  
+    
+    def set_tweet
+        @tweet = current_user.tweets.find(params[:id])
     end   
 end    
