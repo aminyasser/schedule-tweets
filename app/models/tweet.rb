@@ -8,6 +8,12 @@ class Tweet < ApplicationRecord
   after_initialize do
         self.published_at ||= 1.hour.from_now
   end  
+  
+  after_save_commit do
+    if published_at_previously_changed?
+      TweetJob.set(wait_until: published_at).perform_later(self)
+    end
+  end
 
   def published? 
       tweet_id?
