@@ -3,9 +3,11 @@ class TweetsController < ApplicationController
     before_action :set_tweet , only: [:edit, :update, :show, :destroy]
 
     def index
-        @tweets = current_user.tweets.where( "published_at > ?", Time.current).order(:published_at)
-        @published_tweets =  current_user.tweets.where( "published_at < ?", Time.current)
+        @tweets = current_user.tweets.paginate(page: params[:page], per_page: 2).where( "published_at > ?", Time.current).order(:published_at)
     end   
+    def published
+        @published_tweets =  current_user.tweets.paginate(page: params[:page], per_page: 2).where( "published_at < ?", Time.current)
+    end 
     
     def new
         @tweet = Tweet.new

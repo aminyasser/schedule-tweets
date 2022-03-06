@@ -491,3 +491,22 @@ a {
 a:hover {
     color: var(--main-color);
 }
+
+.pagination {
+    justify-content: center;
+ }
+
+.pagination .active {
+     
+ }
+ .pagination > li > a
+ , .pagination > li > a:hover
+{
+    color:var(--main-color) ;
+}
+.pagination > .active > span
+{
+    /* color: white; */
+    background-color: var(--main-color) !important;
+    border: solid 1px var(--main-color) !important;
+}

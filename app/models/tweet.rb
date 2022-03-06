@@ -18,6 +18,11 @@ class Tweet < ApplicationRecord
   def published? 
       tweet_id?
   end 
+  
+  def publish_to_twitter!
+    tweet = twitter_account.client.update(body)
+    update(tweet_id: tweet.id)
+  end  
 
   # To convert the time to AM/PM
   def getStringTime(time)
@@ -36,10 +41,5 @@ class Tweet < ApplicationRecord
     end
   end 
   
-
-  def publish_to_twitter!
-      tweet = twitter_account.client.update(body)
-      update(tweet_id: tweet.id)
-  end  
   
 end  
