@@ -2,12 +2,12 @@
 <div class="py-2 tweet-wrapper">
 <%= image_tag tweet.twitter_account.image, style:"border-radius:50%; width:50px; margin-top:10px" %>
 <%= link_to "@#{tweet.twitter_account.username}", "https://twitter.com/#{tweet.twitter_account.username}" , target: :_blank %>
-<p class="pt-1">
+<p class="pt-2">
 <%= tweet.body %>
 </p>
 
 <% if tweet.published? %>
-    <%= link_to "View Tweet", "https://twitter.com/#{tweet.twitter_account.username}/status/#{tweet.tweet_id}", target: :_blank %>
+    <%= link_to "View Tweet", "https://twitter.com/#{tweet.twitter_account.username}/status/#{tweet.tweet_id}", target: :_blank , class: "btn btn-smale"%>
 <% else %>
  
         <div class="times">
@@ -16,9 +16,11 @@
         <%= l tweet.published_at.to_date, format: :long %> <%= tweet.getStringTime(tweet.published_at) %>
         </div>
         </div>
-    
-    <%= link_to "Edit Tweet", edit_tweet_path(tweet) %>
-    <%= link_to "Delete", tweet, method: :delete, data: { confirm: "Are you sure?" }, class: "btn" %>
+    <div class="">
+        <%= link_to "Edit Tweet", edit_tweet_path(tweet) , class: "btn btn-smale" %>
+    <%= link_to "Delete", tweet, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-delete btn-smale" %>
+    </div>
+
 <% end %>
 </div>
 </div>

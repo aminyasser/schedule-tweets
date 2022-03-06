@@ -21,6 +21,7 @@ class Tweet < ApplicationRecord
 
   def getStringTime(time)
     show_time = time.hour
+    
     if show_time >= 12  
       if show_time == 12
           time = "12:#{time.min} PM"
