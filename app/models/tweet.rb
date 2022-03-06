@@ -19,18 +19,19 @@ class Tweet < ApplicationRecord
       tweet_id?
   end 
 
+  # To convert the time to AM/PM
   def getStringTime(time)
     show_time = time.hour
-    
+    min = time.min.to_s.rjust(2, "0")
     if show_time >= 12  
       if show_time == 12
-          time = "12:#{time.min} PM"
-      else time = "#{show_time - 12}:#{time.min}PM"
+          time = "12:#{min} PM"
+      else time = "#{show_time - 12}:#{min} PM"
       end 
     else 
       if show_time == 0
-          time = "12:#{time.min} AM"
-      else time = "#{show_time}:#{time.min} AM" 
+          time = "12:#{min} AM"
+      else time = "#{show_time}:#{min} AM" 
       end
     end
   end 
