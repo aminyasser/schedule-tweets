@@ -1,20 +1,29 @@
-<h1>Hey there</h1>
 
-<%= link_to 'Accounts', twitter_accounts_path %>
-<%= link_to 'Tweets', tweets_path %>
+<div class="container pt-5">
+    <div class="row pt-5">
+        <div class="col-md-6">
+            <h2>Schedule Tweets</h2>
+            <p class="py-3">
+            Scheduling Tweets for the future with one click. 
+            </p>
+            <% if user_signed_in? %>
+            <p class="pt-4">
+                Hey, <%= current_user.email%>
+            </p>
+            <p>
+            Try it now by  <%= link_to 'Connect Twitter', "/auth/twitter", method: :post , class: "btn"%>
+            </p>
 
-<br>
-<br>
+            <% else %>
+            <p class="py-5"> 
+            Try it now by <%= link_to 'Sign Up', new_user_registration_path  , class: "btn"%>
+            </p>
+            <% end %>
+        </div>
+        <div class="col-md-6">
+        <%= image_tag 'landing' %>
+        </div>
+    </div>
+</div>
 
-
-<% if user_signed_in? %>
-Hey, <%= current_user.email%>
-<%= button_to 'Connect Twitter', "/auth/twitter", method: :post %>
-<%= link_to 'Logout', destroy_user_session_path ,  method: :delete %>
-<% else %>
-<br>
-<%= link_to 'Login', new_user_session_path %>
-<%= link_to 'Sign Up', new_user_registration_path %>
-
-<% end %>
 

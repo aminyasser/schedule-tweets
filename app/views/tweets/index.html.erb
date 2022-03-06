@@ -1,12 +1,33 @@
-<h1>Tweets</h1>
+
+<div class="container py-5">
+<h2>Your Tweets</h2>
 
 
 <% if current_user.twitter_accounts.any?  %>
-    <%= link_to 'Schedule Tweet', new_tweet_path %> 
+    <%= link_to 'Schedule a Tweet', new_tweet_path  , class: "btn"%> 
 <% else %>
-    <%= link_to 'Connect Twitter Account', "/auth/twitter" , method: :post%>
+    <%= link_to 'Connect Twitter Account', "/auth/twitter" , method: :post , class: "btn"%>
 <% end %>
 
+<div class="py-2">
+<ul class="nav nav-pills mb-3  justify-content-center" id="pills-tab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Upcomming</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Published</a>
+  </li>
+</ul>
+<div class="tab-content" id="pills-tabContent">
+    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+    <%= render @tweets %>
+    </div>
+    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+    <%= render @published_tweets %>
+    </div>
 
+</div>
 
-<%= render @tweets %>
+</div>
+
+</div>

@@ -1,0 +1,19 @@
+<div class="py-3 w-50">
+<div class="row">
+<div class="col-md-2">
+<%= image_tag twitter_account.image, style:"border-radius:50%; width:80px; " %>
+</div>
+<div class="col-md-3 pt-3">
+<%= twitter_account.name %>
+<%= link_to "@#{twitter_account.username}", "https://twitter.com/#{twitter_account.username}" , target: :_blank %>
+</div>
+<div class="col-md-2 pt-4">
+<%= button_to 'Disconnect', twitter_account , method: :delete , data: {confirm: "Are you sure?"} , class: "btn btn-delete"%>
+</div>
+<div class="offset-md-5"></div>
+
+</div>
+
+</div>
+
+

@@ -1,0 +1,39 @@
+ <header>
+        <a href="#" class="logo">
+            Schedule Tweets
+        </a>
+        <div class="bx bx-menu" id="menu-icon"></div>
+
+        <!-- Menu -->
+        <ul class="navbar">
+            <li>
+                <a href="/" 
+                class="<% if current_page?(home_path) %> 
+                active 
+                <% end %>">
+                Home</a>
+            </li>
+            <li>
+                <a href="/twitter_accounts"
+                class="<% if current_page?(twitter_accounts_path) %> 
+                active 
+                <% end %>">
+                Accounts</a>
+            </li>
+            <li>
+                <a href="/tweets"
+                class="<% if current_page?(tweets_path) %> 
+                active 
+                <% end %>">
+                Tweets</a>
+            </li>
+        </ul>
+        <div>
+        <% if user_signed_in?%>
+        <%= link_to "Logout" , destroy_user_session_path , class: "btn" , method: :delete %>
+        <% else %>
+        <%= link_to "Sign In" , new_user_session_path , class: "btn" %> 
+        <% end %>
+        </div>
+        
+    </header>

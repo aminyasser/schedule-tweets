@@ -3,7 +3,8 @@ class TweetsController < ApplicationController
     before_action :set_tweet , only: [:edit, :update, :show, :destroy]
 
     def index
-        @tweets = current_user.tweets
+        @tweets = current_user.tweets.where( "published_at > ?", Time.current).order(:published_at)
+        @published_tweets =  current_user.tweets.where( "published_at < ?", Time.current)
     end   
     
     def new
