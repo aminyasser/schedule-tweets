@@ -62,6 +62,8 @@ Rails.application.configure do
   config.assets.quiet = true
   
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+  config.active_job.queue_adapter = :sidekiq
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true
 

@@ -2,6 +2,9 @@ class TweetJob < ApplicationJob
   queue_as :default
 
   def perform(tweet)
+
+    return if tweet.blank?
+
     # if the tweet already published
     return if tweet.published?
 

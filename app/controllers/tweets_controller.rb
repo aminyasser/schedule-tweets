@@ -1,13 +1,19 @@
 class TweetsController < ApplicationController
     before_action :authenticate_user! 
-    before_action :set_tweet , only: [:edit, :update, :show, :destroy]
+    before_action :set_tweet , only: [:edit, :update, :show, :destroy , :publish]
 
     def index
-        @tweets = current_user.tweets.paginate(page: params[:page], per_page: 2).where( "published_at > ?", Time.current).order(:published_at)
+        @tweets = current_user.tweets.paginate(page: params[:page], per_page: 3).where( "published_at > ?", Time.current).order(:published_at)
     end   
     def published
-        @published_tweets =  current_user.tweets.paginate(page: params[:page], per_page: 2).where( "published_at < ?", Time.current)
+        @published_tweets =  current_user.tweets.paginate(page: params[:page], per_page: 3).where( "published_at < ?", Time.current).order("published_at DESC")
     end 
+
+    def publish
+        @tweet.publish_to_twitter!
+        @tweet.update(published_at: Time.current)
+        redirect_to published_tweets_path , notice: "Tweet Posted Successfully"
+    end    
     
     def new
         @tweet = Tweet.new

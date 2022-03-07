@@ -8,6 +8,7 @@
 
 <% if tweet.published? %>
     <%= link_to "View Tweet", "https://twitter.com/#{tweet.twitter_account.username}/status/#{tweet.tweet_id}", target: :_blank , class: "btn btn-smale"%>
+     <%= link_to "Delete", tweet, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-delete btn-smale" %>
 <% else %>
  
         <div class="times">
@@ -15,9 +16,11 @@
         <div class="time">
         <%= l tweet.published_at.to_date, format: :long %> <%= tweet.getStringTime(tweet.published_at) %>
         </div>
+            <i class="mx-2">or</i>  
+            <%= link_to "Post Now", publish_tweet_path(tweet) , class: "font-weight-bold" , method: :post %>
         </div>
-    <div class="">
-        <%= link_to "Edit Tweet", edit_tweet_path(tweet) , class: "btn btn-smale" %>
+    <div>
+    <%= link_to "Edit Tweet", edit_tweet_path(tweet) , class: "btn btn-smale" %>
     <%= link_to "Delete", tweet, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-delete btn-smale" %>
     </div>
 

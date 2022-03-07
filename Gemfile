@@ -61,3 +61,5 @@ gem "will_paginate", "~> 3.3"
 
 
 gem "will_paginate-bootstrap4", "~> 0.2.2"
+
+gem 'sidekiq', '~> 5.2.8'

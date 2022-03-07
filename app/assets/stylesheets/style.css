@@ -494,13 +494,11 @@ a:hover {
 
 .pagination {
     justify-content: center;
- }
+}
 
-.pagination .active {
-     
- }
- .pagination > li > a
- , .pagination > li > a:hover
+
+.pagination > li > a
+, .pagination > li > a:hover
 {
     color:var(--main-color) ;
 }
