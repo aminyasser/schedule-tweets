@@ -386,6 +386,10 @@ header.shadow .profile-link {
     .movies-container {
         grid-template-columns: repeat(auto-fit, minmax(160px, auto));
     }
+
+    .w-50 {
+        width: 75% !important;
+    }
 }
 @media (max-width: 472px) {
     .newsletter form .email {
