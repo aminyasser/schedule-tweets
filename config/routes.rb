@@ -8,5 +8,10 @@ Rails.application.routes.draw do
   resources :tweets
   get "/published_tweets" , to: "tweets#published" , as: "published_tweets"
   post "/published_tweets/:id" , to: "tweets#publish" , as: "publish_tweet"
+  
+  devise_scope :user do
+    get '/users', to: 'devise/registrations#new'
+    get '/users/password', to: 'devise/passwords#new'
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -1,5 +1,5 @@
 <%= form_with model: tweet do |form| %>
-
+<%= render "shared/errors", form: form.object %>
   <div class="mb-3">
     <%= form.label :twitter_account_id %>
     <%= form.collection_select :twitter_account_id, current_user.twitter_accounts, :id, :username, {}, { class: "form-control" } %>
