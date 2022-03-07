@@ -2,8 +2,16 @@ class Tweet < ApplicationRecord
   belongs_to :user
   belongs_to :twitter_account
 
+  validates :twitter_account, presence: true
   validates :body , length: {minimum:1, maximum:280}
   validates :published_at , presence: :true
+  validate :published_at_cannot_be_in_the_past
+
+  def published_at_cannot_be_in_the_past
+    if published_at.present? && published_at < Time.current
+      errors.add(:published_at, "can't be in the past")
+    end
+  end
 
   after_initialize do
         self.published_at ||= 1.hour.from_now
