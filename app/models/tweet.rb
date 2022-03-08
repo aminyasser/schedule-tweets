@@ -5,7 +5,8 @@ class Tweet < ApplicationRecord
   # validates :twitter_account, presence: true
   validates :body , length: {minimum:1, maximum:280}
   validates :published_at , presence: :true
-  validate :published_at_cannot_be_in_the_past
+  validate :published_at_cannot_be_in_the_past , if: :not_published?
+  
 
   def published_at_cannot_be_in_the_past
     if published_at.present? && published_at < Time.current
@@ -25,6 +26,10 @@ class Tweet < ApplicationRecord
 
   def published? 
       tweet_id?
+  end 
+  
+  def not_published? 
+    !tweet_id?
   end 
   
   def publish_to_twitter!
