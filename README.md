@@ -7,7 +7,7 @@ Built Rails Schedule Twitter Tweets to practice on ROR and twitter API. Using Si
 - Authentication
 - Connect Twitter Account 
 - Schedule Tweet 
-- Edit Scheduled
+- Edit Scheduled Tweets
 
 ## Running locally 
 
